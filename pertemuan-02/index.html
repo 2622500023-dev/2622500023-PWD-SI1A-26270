@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title> Dasar HTML5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa</title>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>Ini contoh penulisan halaman HTML5 minimalis tanpa header/main/footer.</p>
+    <header>
+        <h1>Profil Mahasiswa</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Selamat Datang</h2>
+            <p>Halo, saya Puteri Diana. Saya sedang mempelajari Pemrograman Web Dasar.</p>
+            <img src="img/foto-profil.jpg" alt="Foto profil Puteri Diana">      
+        </section>
+
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <article>
+              <h3>Profil Singkat</h3>
+              <p>Saya mahasiswa Program Studi Sistem Informasi.</p>
+
+              <h3>Target Belajar</h3>
+                <ol>
+                  <li>Memahami struktur HTML5.</li>
+                  <li>Menyusun halaman web semantik.</li>
+                  <li>Memvalidasi dokumen HTML.</li> 
+                </ol>
+            </article>  
+        </section>  
+
+        <section id="contact">
+          <h2>Kontak</h2>
+          <p>Kunjungi <a href="https://github.com/2622500023-dev">profil GitHub saya</a>.</p>
+        </section>
+      </main>
+
+    <footer>
+        <p>&copy; 2026 Puteri Diana 2622500023</p>
+    </footer>
 </body>
-<html></html>
+</html>

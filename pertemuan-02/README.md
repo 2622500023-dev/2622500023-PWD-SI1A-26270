@@ -13,7 +13,7 @@ elemen semantik, teks, daftar, tautan, dan gambar.
 ## Validasi HTML
 - Berkas yang divalidasi: `index.html`
 - Galat yang ditemukan: 
-- Perbaikan yang dilakukan:
+- Perbaikan yang dilakukan: [menambahkan width dan height pada foto mahasiswa]
 - Hasil validasi akhir: [Membuat website profil untuk mahasiswa]
 
 ## Github Pages

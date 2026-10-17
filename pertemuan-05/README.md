@@ -31,29 +31,29 @@ Tambahkan entri setiap kali ada perkembangan penting pada proyek.
 
 # Pengujian 
 
-- [Pengujian Baseline]: [
+- [Pengujian Baseline]: 
     - Langkah pengujian: membuka "index.html" pada peramban dan memeriksa struktur halaman, navigasi, formulir, footer, CSS, serta gambar profil.
-    - Hasil aktual: isi berdasarkan pemeriksaan yang telah dilakukan.] 
+    - Hasil aktual: isi berdasarkan pemeriksaan yang telah dilakukan.
 
-- [Pengujian JavaScript Eksternal]: [
+- [Pengujian JavaScript Eksternal]: 
     - Langkah pengujian: menghubungkan "script.js" dengan "index.html", kemudian memeriksa pesan pengujian melalui Console Browser DevTools.
-    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.]
+    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.
 
-- [Pengujian Navigasi Responsif]: [
+- [Pengujian Navigasi Responsif]: 
     - Langkah pengujian: menguji tombol navigasi pada ukuran layar kecil dan desktop, serta memeriksa perubahan tampilan menu, "aria-expanded", dan "aria-label".
-    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.] 
+    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.
 
-- [Pengujian Validasi Formulir]: [
+- [Pengujian Validasi Formulir]:
     - Langkah pengujian: mengirim formulir dengan masukan yang tidak memenuhi aturan, memperbaiki masukan, kemudian menguji kembali hingga seluruh aturan validasi terpenuhi.
-    - Hasil aktual: isi berdasarkan pesan validasi yang benar-benar muncul pada peramban.] 
+    - Hasil aktual: isi berdasarkan pesan validasi yang benar-benar muncul pada peramban.
 
-- [Pengujian Umpan Balik]: [
+- [Pengujian Umpan Balik]: 
     - Langkah pengujian: memeriksa pesan ketika validasi gagal dan berhasil, kemudian mengubah masukan atau melakukan reset formulir.
-    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.] 
+    - Hasil aktual: isi berdasarkan hasil pengujian yang telah dilakukan.
 
-- [Pengujian Akhir dan Debugging]: [
+- [Pengujian Akhir dan Debugging]: 
     - Langkah pengujian: menguji kembali interaksi navigasi, aturan validasi, dan umpan balik serta memeriksa Console untuk menemukan galat JavaScript.
-    - Hasil aktual: isi berdasarkan pengujian akhir yang benar-benar dilakukan, termasuk galat dan perbaikannya jika ada.] 
+    - Hasil aktual: isi berdasarkan pengujian akhir yang benar-benar dilakukan, termasuk galat dan perbaikannya jika ada.
 
 Perbarui bagian ini setelah melakukan pengujian atau debugging yang relevan.
 

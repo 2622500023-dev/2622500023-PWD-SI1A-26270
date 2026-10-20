@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css" /> 
 </head>
 <body>
+<p>Konten HTML statis.</p> 
 <?php 
-// Pengujian awal eksekusi PHP. 
-echo "PHP berhasil dijalankan."; 
-?>
+echo "<p>Konten yang dihasilkan oleh PHP.</p>"; 
+?> 
     <header>
       <div class="header-top"> 
         <h1>Profil Mahasiswa</h1>

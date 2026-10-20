@@ -14,6 +14,7 @@ const PROFIL_GITHUB = "2622500023-dev";
 // Bagian 2: Operator 
 $batasSemester = 8; 
 $sisaSemester = $batasSemester - $semester;
+$statusSemester = ($semesterValid && $statusAktif) ? "Perlu diperiksa" : "Sesuai rentang";
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -65,6 +66,7 @@ $sisaSemester = $batasSemester - $semester;
         <article>
           <h3>Profil Singkat</h3>
           <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
+          <p>Pemeriksaan rentang semester: <?php echo $statusSemester; ?></p>
           <p>Saya mahasiswa Program Studi Sistem Informasi.</p>
 
           <h3>Target Belajar</h3>

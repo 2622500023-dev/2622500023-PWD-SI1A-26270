@@ -1,5 +1,7 @@
 <?php 
-// P7: penggunaan GET 
+session_start(); 
+
+// P7: penggunaan POST
 $nama = trim((string) ($_POST['nama'] ?? '')); 
 $email = trim((string) ($_POST['email'] ?? '')); 
 $semesterForm = trim((string) ($_POST['semester'] ?? '')); 
@@ -8,59 +10,25 @@ $prodi = trim((string) ($_POST['prodi'] ?? ''));
 $pesan = trim((string) ($_POST['pesan'] ?? '')); 
 $tanggal = trim((string) ($_POST['tanggal'] ?? '')); 
 $minat = $_POST['minat'] ?? []; 
+
 $pesanKesalahan = ''; 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
-  if (trim($semesterForm) !== '') { 
-  $semesterValid = filter_var( 
-    $semesterForm, 
-    FILTER_VALIDATE_INT 
-  ); 
- 
-    if ( 
-    $semesterValid === false || 
-    $semesterValid < 1 || 
-    $semesterValid > 14 
-    ) { 
-    $pesanKesalahan .= 'Semester harus berupa bilangan bulat antara 1 dan 14. '; 
-    } 
+  if (trim($nama ?? '') === '') { 
+    $pesanKesalahan .= 'Nama lengkap wajib diisi. '; 
   } 
-  if (trim($email) !== '') { 
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) { 
-    $pesanKesalahan .= 'Format email tidak valid. '; 
-    } 
+
+  if (trim($email) === '') { 
+    $pesanKesalahan .= 'Email wajib diisi. '; 
   } 
-  if (!in_array($jenisPesan, ['pertanyaan', 'saran'], true)) { 
-  $pesanKesalahan .= 'Jenis pesan tidak valid. '; 
+
+  if (trim($semesterForm) === '') { 
+    $pesanKesalahan .= 'Semester wajib diisi. '; 
   } 
- 
-  if (!in_array($prodi, ['SI', 'TI'], true)) { 
-  $pesanKesalahan .= 'Program studi tidak valid. '; 
-  } 
- 
-  $minatDiizinkan = ['HTML', 'CSS']; 
- 
-  if (!is_array($minat)) { 
-  $pesanKesalahan .= 'Format pilihan topik tidak valid. '; 
-  } else { 
-  foreach ($minat as $topik) { 
-    if (!in_array($topik, $minatDiizinkan, true)) { 
-      $pesanKesalahan .= 'Pilihan topik tidak valid. '; 
-      break; 
-    } 
-  } 
-}
-if (trim($nama ?? '') === '') { 
-$pesanKesalahan .= 'Nama lengkap wajib diisi. '; 
-} 
-if (trim($email) === '') { 
-$pesanKesalahan .= 'Email wajib diisi. '; 
-} 
-if (trim($semesterForm) === '') { 
-$pesanKesalahan .= 'Semester wajib diisi. '; 
-} 
-if (trim($tanggal) === '') { 
-$pesanKesalahan .= 'Tanggal kunjungan wajib diisi. '; 
-}
+
+  if (trim($tanggal) === '') { 
+    $pesanKesalahan .= 'Tanggal kunjungan wajib diisi. '; 
+  }
+
  if ($jenisPesan === '') { 
     $pesanKesalahan .= 'Jenis pesan wajib dipilih. '; 
   } 
@@ -74,12 +42,51 @@ $pesanKesalahan .= 'Tanggal kunjungan wajib diisi. ';
   } 
   if (empty($minat)) { 
     $pesanKesalahan .= 'Minat wajib dipilih minimal satu. '; 
+  }
+
+if (trim($semesterForm) !== '') { 
+  $semesterValid = filter_var( 
+    $semesterForm, 
+    FILTER_VALIDATE_INT 
+  ); 
+ 
+  if ( 
+    $semesterValid === false || 
+    $semesterValid < 1 || 
+    $semesterValid > 14 
+  ) { 
+    $pesanKesalahan .= 'Semester harus berupa bilangan bulat antara 1 dan 14. '; 
   } 
-} 
-if (isset($_POST['nama'])) { 
-  $nama = $_POST['nama'];
-echo "Nama yang diterima: " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); 
+  } 
+
+  if (trim($email) !== '') { 
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) { 
+    $pesanKesalahan .= 'Format email tidak valid. '; 
+    } 
+  } 
+
+  if (!in_array($jenisPesan, ['pertanyaan', 'saran'], true)) { 
+  $pesanKesalahan .= 'Jenis pesan tidak valid. '; 
+  } 
+ 
+  if (!in_array($prodi, ['SI', 'TI'], true)) { 
+  $pesanKesalahan .= 'Program studi tidak valid. '; 
+  } 
+ 
+  $minatDiizinkan = ['HTML', 'CSS']; 
+ 
+  if (!is_array($minat)) { 
+    $pesanKesalahan .= 'Format pilihan topik tidak valid. '; 
+  } else { 
+  foreach ($minat as $topik) { 
+    if (!in_array($topik, $minatDiizinkan, true)) { 
+      $pesanKesalahan .= 'Pilihan topik tidak valid. '; 
+      break; 
+    } 
+  } 
 }
+}
+
 // P6: PHP dasar dan pemrograman sisi peladen 
 // Bagian 1: Variabel dan konstanta 
 $nim = "2622500023"; 
@@ -117,6 +124,47 @@ switch ($programStudi) {
   default: 
     $fokusProgramStudi = "Belum ditentukan"; 
 } 
+
+// P7 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {  
+  $_SESSION['pesanKesalahan'] = $pesanKesalahan; 
+ 
+  $_SESSION['nama'] = $nama; 
+  $_SESSION['email'] = $email; 
+  $_SESSION['semester'] = $semesterForm; 
+  $_SESSION['tanggal'] = $tanggal; 
+  $_SESSION['jenis_pesan'] = $jenisPesan; 
+  $_SESSION['prodi'] = $prodi; 
+  $_SESSION['minat'] = $minat; 
+  $_SESSION['pesan'] = $pesan; 
+ 
+  header('Location: index.php'); 
+  exit; 
+} 
+
+$pesanKesalahan = $_SESSION['pesanKesalahan'] ?? ''; 
+$nama = $_SESSION['nama'] ?? ''; 
+$email = $_SESSION['email'] ?? ''; 
+$semesterForm = $_SESSION['semester'] ?? '' ; 
+$tanggal = $_SESSION['tanggal'] ?? date("Y-m-d"); 
+$jenisPesan = $_SESSION['jenis_pesan'] ?? ''; 
+$prodi = $_SESSION['prodi'] ?? ''; 
+$minat = $_SESSION['minat'] ?? ''; 
+$pesan = $_SESSION['pesan'] ?? ''; 
+?> 
+<!doctype html> 
+… 
+<?php if ($pesanKesalahan !== ''): ?> 
+  <p class="form-feedback-error"> 
+    <?= htmlspecialchars($pesanKesalahan, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <?php 
+  unset( 
+    $_SESSION['pesanKesalahan'] 
+  ); 
+  ?> 
+<?php endif; ?> 
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -224,6 +272,11 @@ switch ($programStudi) {
           <p class="form-feedback-error"> 
             <?= htmlspecialchars($pesanKesalahan, ENT_QUOTES, 'UTF-8') ?> 
           </p> 
+          <?php 
+          unset( 
+            $_SESSION['pesanKesalahan'] 
+          ); 
+          ?>
         <?php endif; ?> 
 
         <p>
@@ -318,7 +371,7 @@ switch ($programStudi) {
           <button type="reset">Batal</button> 
           <p id="formFeedback"></p> 
         </form> 
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?> 
+        <?php if (!empty($nama)): ?> 
   <h3>Data yang Diterima Peladen</h3> 
  
   <p>Nama: 

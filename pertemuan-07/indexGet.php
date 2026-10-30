@@ -14,12 +14,15 @@ $semester = 1;
 $ipk = 3.75; 
 $statusAktif = true; 
 $catatanTambahan = null; 
+
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar"; 
 const PROFIL_GITHUB = "2622500023-dev"; 
+
 // Bagian 2: Operator 
 $batasSemester = 8; 
 $sisaSemester = $batasSemester - $semester;
 $statusSemester = ($semesterValid && $statusAktif) ? "Perlu diperiksa" : "Sesuai rentang";
+
 // Bagian 3: Percabangan if-elseif-else 
 if ($semester < 3) { 
   $keteranganSemester = "Semester awal"; 
@@ -28,8 +31,10 @@ if ($semester < 3) {
 } else { 
   $keteranganSemester = "Semester akhir"; 
 }
+
 $namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
 Informatika" : "Lainnya"); 
+
 // Bagian 4: Percabangan switch-case-default 
 switch ($programStudi) { 
   case "SI":

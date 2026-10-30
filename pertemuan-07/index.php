@@ -1,4 +1,9 @@
 <?php 
+// P7: penggunaan GET 
+if (isset($_GET['nama'])) { 
+  $nama = $_GET['nama']; 
+  echo "Nama yang diterima: " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); 
+}
 // P6: PHP dasar dan pemrograman sisi peladen 
 // Bagian 1: Variabel dan konstanta 
 $nim = "2622500023"; 

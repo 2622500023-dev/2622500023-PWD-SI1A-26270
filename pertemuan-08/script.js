@@ -31,14 +31,18 @@ contactForm.addEventListener("submit", (event) => {
     formFeedback.textContent = "No telepon harus diisi 10 sampai 15 karakter."; 
     return; 
   } 
- 
+  if (!/^\d+$/.test(telepon)) {
+  formFeedback.textContent = "Nomor telepon hanya boleh berisi angka.";
+  return;
+  }
+  
   const alamat = alamatInput.value.trim(); 
   if (alamat.length === 0) { 
     formFeedback.textContent = "Alamat harus diisi."; 
     return; 
   } 
  
-  if (alamat.length > 300) { 
+  if (alamat.length > 150) { 
     formFeedback.textContent = "Alamat maksimal 150 karakter."; 
     return; 
   }  

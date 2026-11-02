@@ -161,7 +161,7 @@ if ($semester < 3) {
         <h3>Registrasi Pelanggan</h3>
         <p>Daftarkan diri kamu untuk menjadi bagian dari pelanggan Putte Florist.</p>
 
-        <form action="index.html" method="get">
+        <form action="index.php" method="get">
           <div class="form-group"> 
             <label for="nama">Nama Lengkap</label><br> 
             <input class="input-form" 

@@ -5,7 +5,7 @@ const namaInput = document.getElementById("nama");
 const emailInput = document.getElementById("email"); 
 const teleponInput = document.getElementById("telepon"); 
 const alamatInput = document.getElementById("alamat"); 
-const katasandiInput = document.getElementById("katasandi"); 
+const katasandiInput = document.getElementById("password"); 
 const pesanInput = document.getElementById("pesan"); 
  
 contactForm.addEventListener("submit", (event) => { 

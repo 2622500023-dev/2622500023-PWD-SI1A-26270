@@ -1,3 +1,20 @@
+<?php 
+// P8: PHP dasar dan pemrograman sisi peladen 
+// Bagian 1: Variabel dan konstanta 
+$programStudi = "SI"; 
+$semester = 1; 
+$namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
+Informatika" : "Lainnya");
+// Bagian 2: Percabangan if-elseif-else 
+if ($semester < 3) { 
+  $keteranganSemester = "Semester awal"; 
+} elseif ($semester <= 6) { 
+  $keteranganSemester = "Semester menengah"; 
+} else { 
+  $keteranganSemester = "Semester akhir"; 
+} 
+?> 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -128,9 +145,9 @@
           <div class="profile-info">
             <h4>Nama: Puteri Diana</h4>
             <h4>NIM: 2622500023</h4>
-            <h4>Program Studi: Sistem Informasi</h4>
+            <h4>Program Studi: <?php echo $namaProdi . " (" . $programStudi . ")"; ?></h4> 
             <h4>Kelompok: SI1A</h4>
-            <h4>Semester: 1</h4>
+            <h4>Semester: <?php echo $semester . " (" . $keteranganSemester . ")"; ?></h4> 
             <h4>Tempat/Tanggal Lahir: PangkalPinang, 08 November 2008</h4>
             <h4>Alamat: Petaling</h4>
             <h4>Agama: Islam</h4>

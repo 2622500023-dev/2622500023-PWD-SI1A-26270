@@ -235,6 +235,13 @@ main p {
     font-weight: normal;
 }
 
+.profile-info p {
+    color: #6E3B3B;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
 /* FORM REGISTRASI */
 
 .form-group {

@@ -109,7 +109,7 @@ if ($semester < 3) {
           <div class="product-card">
             <img src="img/flower box.jpg" alt="Flower Box">
             <h4>Flower Box</h4>
-            <p class="product-price">190.000</p>
+            <p class="product-price">Rp190.000</p>
           </div>
         </div>
       </section>
@@ -161,7 +161,9 @@ if ($semester < 3) {
         <h3>Registrasi Pelanggan</h3>
         <p>Daftarkan diri kamu untuk menjadi bagian dari pelanggan Putte Florist.</p>
 
-        <form action="index.php" method="get">
+
+        <form id="contactForm"
+              action="index.php" method="get">
           <div class="form-group"> 
             <label for="nama">Nama Lengkap</label><br> 
             <input class="input-form" 
@@ -199,7 +201,7 @@ if ($semester < 3) {
                       id="alamat" 
                       name="alamat" 
                       minlength="3"
-                      maxlength="300" 
+                      maxlength="150" 
                       placeholder="Masukkan alamat lengkap" 
                       required>
             </textarea> 

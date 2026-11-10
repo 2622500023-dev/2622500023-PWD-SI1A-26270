@@ -57,6 +57,7 @@ if ($semester < 3) {
 $namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
 Informatika" : "Lainnya");
 
+// P8
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {  
   $_SESSION['pesanKesalahan'] = $pesanKesalahan; 
  
@@ -364,7 +365,7 @@ $pesan = $_SESSION['pesan'] ?? '';
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
+    <p>&copy;2622500023_Puteri Diana_SI1A_UTS Pemrograman Web Dasar</p>
   </footer>
   <script src="script.js"></script>
 </body>

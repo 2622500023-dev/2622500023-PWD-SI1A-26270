@@ -257,7 +257,7 @@ Informatika" : "Lainnya");
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
+    <p>&copy;2622500023_Puteri Diana_SI1A_UTS Pemrograman Web Dasar</p>
   </footer>
   <script src="script.js"></script>
 </body>

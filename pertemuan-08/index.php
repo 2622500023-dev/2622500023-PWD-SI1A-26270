@@ -2,11 +2,15 @@
 // P7: penggunaan GET 
 if (isset($_POST['nama'])) { 
   $nama = $_POST['nama']; 
+  $email = $_POST['email']; 
+  $notelepon = $_POST['no_telepon']; 
+  $alamat = $_POST['alamat']; 
+  $katasandi = $_POST['kata_sandi']; 
   echo "Nama yang diterima: " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); 
 }
 // P8: PHP dasar dan pemrograman sisi peladen 
 // Bagian 1: Variabel dan konstanta 
-$nim = "2622500023"; 
+$nim = "2622500023";
 $namaMahasiswa = "Puteri Diana"; 
 $programStudi = "SI"; 
 $semester = 1; 

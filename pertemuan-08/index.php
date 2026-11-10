@@ -6,10 +6,11 @@ if (isset($_GET['nama'])) {
 }
 // P8: PHP dasar dan pemrograman sisi peladen 
 // Bagian 1: Variabel dan konstanta 
+$nim = "2622500023"; 
+$namaMahasiswa = "Puteri Diana"; 
 $programStudi = "SI"; 
 $semester = 1; 
-$namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
-Informatika" : "Lainnya");
+
 // Bagian 2: Percabangan if-elseif-else 
 if ($semester < 3) { 
   $keteranganSemester = "Semester awal"; 
@@ -18,6 +19,8 @@ if ($semester < 3) {
 } else { 
   $keteranganSemester = "Semester akhir"; 
 } 
+$namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
+Informatika" : "Lainnya");
 ?> 
 
 <!DOCTYPE html>
@@ -254,7 +257,7 @@ if ($semester < 3) {
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy;2622500023_Puteri Diana_SI1A_UTS Pemrograman Web Dasar</p>
+    <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
   </footer>
   <script src="script.js"></script>
 </body>

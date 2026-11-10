@@ -1,13 +1,40 @@
 <?php 
 // P7: penggunaan GET 
 if (isset($_POST['nama'])) { 
-  $nama = $_POST['nama']; 
-  $email = $_POST['email']; 
-  $notelepon = $_POST['no_telepon']; 
-  $alamat = $_POST['alamat']; 
-  $katasandi = $_POST['kata_sandi']; 
+  $nama = trim((string) ($_POST['nama'] ?? '')); 
+  $email = trim((string) ($_POST['email'] ?? ''));
+  $notelepon = trim((string) ($_POST['no_telepon'] ?? '')); 
+  $alamat = trim((string) ($_POST['alamat'] ?? '')); 
+  $katasandi = trim((string) ($_POST['kata_sandi'] ?? '')); 
+  $pesan = trim((string) ($_POST['pesan'] ?? '')); 
+  $pesanKesalahan = ''; 
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (trim($email) !== '') { 
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) { 
+    $pesanKesalahan .= 'Format email tidak valid. '; 
+    } 
+  } 
+  if (trim($nama ?? '') === '') { 
+$pesanKesalahan .= 'Nama lengkap wajib diisi. '; 
+} 
+if (trim($email) === '') { 
+$pesanKesalahan .= 'Email wajib diisi. '; 
+} 
+if (trim($notelepon) === '') { 
+$pesanKesalahan .= 'No telepon wajib diisi. '; 
+} 
+if (trim($alamat) === '') { 
+$pesanKesalahan .= 'Alamat wajib diisi. '; 
+}
+if (trim($pesan) === '') { 
+    $pesanKesalahan .= 'Pesan wajib diisi. '; 
+  } 
+}
+if (isset($_POST['nama'])) { 
+  $nama = $_POST['nama'];
   echo "Nama yang diterima: " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); 
 }
+
 // P8: PHP dasar dan pemrograman sisi peladen 
 // Bagian 1: Variabel dan konstanta 
 $nim = "2622500023";
@@ -171,6 +198,11 @@ Informatika" : "Lainnya");
       <!-- REGISTRASI -->
       <section id="registration">
         <h3>Registrasi Pelanggan</h3>
+        <?php if ($pesanKesalahan !== ''): ?> 
+          <p class="form-feedback-error"> 
+            <?= htmlspecialchars($pesanKesalahan, ENT_QUOTES, 'UTF-8') ?> 
+          </p> 
+        <?php endif; ?> 
         <p>Daftarkan diri kamu untuk menjadi bagian dari pelanggan Putte Florist.</p>
 
 

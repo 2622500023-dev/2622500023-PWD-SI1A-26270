@@ -1,5 +1,6 @@
 <?php 
-// P7: penggunaan GET 
+session_start(); 
+// P7: penggunaan POST
 if (isset($_POST['nama'])) { 
   $nama = trim((string) ($_POST['nama'] ?? '')); 
   $email = trim((string) ($_POST['email'] ?? ''));
@@ -26,6 +27,9 @@ $pesanKesalahan .= 'No telepon wajib diisi. ';
 if (trim($alamat) === '') { 
 $pesanKesalahan .= 'Alamat wajib diisi. '; 
 }
+if (trim($katasandi) === '') { 
+    $pesanKesalahan .= 'Kata sandi wajib diisi. '; 
+  }
 if (trim($pesan) === '') { 
     $pesanKesalahan .= 'Pesan wajib diisi. '; 
   } 
@@ -52,9 +56,44 @@ if ($semester < 3) {
 } 
 $namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
 Informatika" : "Lainnya");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {  
+  $_SESSION['pesanKesalahan'] = $pesanKesalahan; 
+ 
+  $_SESSION['nama'] = $nama; 
+  $_SESSION['email'] = $email; 
+  $_SESSION['no_telepon'] = $notelepon; 
+  $_SESSION['alamat'] = $alamat; 
+  $_SESSION['kata_sandi'] = $katasandi; 
+  $_SESSION['pesan'] = $pesan; 
+ 
+  header('Location: index.php'); 
+  exit; 
+} 
+
+$pesanKesalahan = $_SESSION['pesanKesalahan'] ?? ''; 
+$nama = $_SESSION['nama'] ?? ''; 
+$email = $_SESSION['email'] ?? ''; 
+$notelepon = $_SESSION['no_telepon'] ?? '' ; 
+$alamat = $_SESSION['alamat'] ?? ''; 
+$katasandi = $_SESSION['kata_sandi'] ?? '';  
+$pesan = $_SESSION['pesan'] ?? ''; 
 ?> 
 
 <!DOCTYPE html>
+
+?php if ($pesanKesalahan !== ''): ?> 
+  <p class="form-feedback-error"> 
+    <?= htmlspecialchars($pesanKesalahan, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <?php 
+  unset( 
+    $_SESSION['pesanKesalahan'] 
+  ); 
+  ?> 
+<?php endif; ?> 
+
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -202,6 +241,11 @@ Informatika" : "Lainnya");
           <p class="form-feedback-error"> 
             <?= htmlspecialchars($pesanKesalahan, ENT_QUOTES, 'UTF-8') ?> 
           </p> 
+          <?php 
+          unset( 
+            $_SESSION['pesanKesalahan'] 
+          ); 
+          ?>
         <?php endif; ?> 
         <p>Daftarkan diri kamu untuk menjadi bagian dari pelanggan Putte Florist.</p>
 
@@ -274,7 +318,7 @@ Informatika" : "Lainnya");
           <button type="reset">Batal</button>
           <p id="formFeedback"></p> 
         </form>
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?> 
+        <?php if (!empty($nama)): ?>  
   <h3>Data yang Diterima Peladen</h3> 
  
   <p>Nama: 

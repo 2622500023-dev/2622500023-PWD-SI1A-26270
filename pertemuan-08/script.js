@@ -64,6 +64,7 @@ contactForm.addEventListener("submit", (event) => {
     return; 
   } 
  
+  formFeedback.className = "form-feedback-error"; 
   formFeedback.textContent = "Form berhasil divalidasi."; 
   formFeedback.className = "form-feedback-success";
   contactForm.submit();

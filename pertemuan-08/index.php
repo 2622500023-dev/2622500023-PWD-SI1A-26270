@@ -274,6 +274,33 @@ Informatika" : "Lainnya");
           <button type="reset">Batal</button>
           <p id="formFeedback"></p> 
         </form>
+        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?> 
+  <h3>Data yang Diterima Peladen</h3> 
+ 
+  <p>Nama: 
+    <?= htmlspecialchars($nama, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <p>Email: 
+    <?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <p>No Telepon: 
+    <?= htmlspecialchars($noteleponForm, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <p>Alamat: 
+    <?= htmlspecialchars($alamat, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <p>Kata Sandi: 
+    <?= htmlspecialchars($katasandi, ENT_QUOTES, 'UTF-8') ?> 
+  </p> 
+ 
+  <p>Pesan:</p> 
+ 
+  <p><?= nl2br(htmlspecialchars($pesan, ENT_QUOTES, 'UTF-8')) ?></p> 
+<?php endif; ?> 
       </section>
 
       <!-- KONTAK -->

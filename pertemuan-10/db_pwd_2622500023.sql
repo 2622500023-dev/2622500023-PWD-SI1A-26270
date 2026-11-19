@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 17, 2026 at 06:13 AM
+-- Generation Time: Nov 19, 2026 at 01:33 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -59,6 +59,16 @@ INSERT INTO `tbl_kontak_2622500023` (`id`, `nama`, `email`, `semester`, `tanggal
 --
 ALTER TABLE `tbl_kontak_2622500023`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_kontak_2622500023`
+--
+ALTER TABLE `tbl_kontak_2622500023`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

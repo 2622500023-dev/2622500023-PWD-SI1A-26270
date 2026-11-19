@@ -103,4 +103,3 @@ contactForm.addEventListener("reset", () => {
 contactForm.addEventListener("input", () => { 
   formFeedback.textContent = ""; 
 });
-

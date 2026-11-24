@@ -9,6 +9,7 @@ require_once("koneksi.php");
 
 // P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
 $sql = "SELECT * FROM tbl_kontak_2622500023"; 
+$hasil = mysqli_query($koneksi, $sql); 
 
 <?php 
 session_start(); 

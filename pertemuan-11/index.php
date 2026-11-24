@@ -7,6 +7,9 @@ dimuat berulang kali.
 #P11 
 require_once("koneksi.php"); 
 
+// P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
+$sql = "SELECT * FROM tbl_kontak_2622500023"; 
+
 <?php 
 session_start(); 
 

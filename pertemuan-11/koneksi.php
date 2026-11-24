@@ -4,3 +4,5 @@ $host = "localhost";
 $user = "root"; 
 $password = ""; 
 $database = "db_pwd_2622500023";
+// Membuat koneksi PHP dengan MySQL menggunakan MySQLi. 
+mysqli_report(MYSQLI_REPORT_OFF); 

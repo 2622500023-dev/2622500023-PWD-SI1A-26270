@@ -8,8 +8,12 @@ dimuat berulang kali.
 require_once("koneksi.php"); 
 
 // P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
-$sql = "SELECT * FROM tbl_kontak_2622500023"; 
+$sql = "SELECT * FROM tbl_tabel_tidak_tersedia"; 
 $hasil = mysqli_query($koneksi, $sql); 
+// P11: Memeriksa keberhasilan kueri SELECT. 
+if (!$hasil) { 
+  die("Kueri SELECT gagal dijalankan."); 
+} 
 
 <?php 
 session_start(); 

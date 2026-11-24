@@ -2,9 +2,7 @@
 #dimatikan pada P11 
 #session_start(); 
  
-require_once("fungsi.php"); #Penggunaan require_once() memastikan berkas tersebut tersedia dan tidak 
-dimuat berulang kali. 
-#P11 
+require_once("fungsi.php"); #Penggunaan require_once() memastikan berkas tersebut tersedia dan tidak dimuat berulang kali. #P11 
 require_once("koneksi.php"); 
 
 // P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
@@ -23,11 +21,6 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 echo "<pre>"; 
 var_dump($dataKontak); 
 echo "</pre>"; 
-
-<?php 
-session_start(); 
-
-require_once("fungsi.php"); #memastikan berkas tersebut tersedia dan tidak dimuat berulang kali. 
 
 // P7: penggunaan POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -152,8 +145,10 @@ $teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
           <h3>Profil Singkat</h3>
           <p>Program Studi: <?= bersihkan($namaProdi . " (" . $programStudi . ")"); ?></p>
           <p>Fokus program studi: <?= bersihkan($fokusProgramStudi); ?></p>
+          <p>Status mahasiswa: <?= $statusAktif ? "Aktif" : "Tidak aktif"; ?></p>
           <p>Semester: <?= bersihkan($semester . " (" . $keteranganSemester . ")"); ?></p>
           <p>Sisa semester hingga batas: <?= bersihkan($sisaSemester); ?></p>
+          <p>IPK: <?= number_format($ipk, 2, ',', '.'); ?></p>
           <p>Pemeriksaan rentang semester: <?= bersihkan($statusSemester); ?></p>
           <p>Catatan tambahan: <?= $catatanTambahan === null ? "Belum ada" : bersihkan($catatanTambahan); ?></p>
 
@@ -308,52 +303,29 @@ $teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
           <button type="reset">Batal</button> 
           <p class="form-feedback" data-form-feedback aria-live="polite"></p> 
         </form> 
-         <?php if (isset($_SESSION["form_data"])): ?> 
-        <?php 
-        // Larik asosiatif untuk menghubungkan nama field dengan label. 
-        /* 
-        kunci larik tidak harus berupa angka.  
-        Kunci dapat berupa teks yang memiliki makna tertentu. 
-        */ 
-        $labelMap = [ 
-          "nama"        => "Nama Lengkap", 
-          "email"       => "Email", 
-          "semester"    => "Semester", 
-          "tanggal"     => "Tanggal Kunjungan", 
-          "jenis_pesan" => "Jenis Pesan", 
-          "prodi"       => "Program Studi", 
-        ]; 
-        ?> 
+
         <article id="hasilKontak" class="submission-result" aria-live="polite"> 
-          <h3>Data Formulir yang Dikirim</h3> 
- 
-          <?php foreach ($labelMap as $key => $label): ?> 
-            <p><strong><?= bersihkan($label); ?>:</strong> <?= bersihkan($_SESSION["form_data"][$key]); 
-?></p> 
-          <?php endforeach; ?> 
- 
-          <?php 
-          /* 
-            $key untuk mendapatkan kunci larik. 
-            $label untuk mendapatkan nilai larik. 
-            $key untuk mengakses data formulir pada $_SESSION["form_data"]. 
-          */ 
-          ?> 
- 
-          <p><strong>Topik yang Diminati:</strong></p> 
-          <?php if (count($_SESSION["form_data"]["minat"]) > 0): ?> 
-            <ul> 
-              <?php foreach ($_SESSION["form_data"]["minat"] as $topik): ?> 
-                <li><?= bersihkan($topik); ?></li> 
-              <?php endforeach; ?> 
-            </ul> 
-          <?php else: ?> 
-            <p>Belum ada topik yang dipilih.</p> 
-          <?php endif; ?> 
- 
-          <p><strong>Pesan:</strong> <?= nl2br(bersihkan($_SESSION["form_data"]["pesan"])); ?></p> 
-        </article> 
-      <?php endif; ?>
+  <h3>Data Kontak dari Basis Data</h3> 
+  <?php if (count($dataKontak) > 0): ?>
+  <?php foreach ($dataKontak as $data): ?> 
+    <section> 
+      <!-- Data kontak ditampilkan di sini. --> 
+      <p><strong>ID:</strong> <?= bersihkan($data["id"]); ?></p> 
+      <p><strong>Nama:</strong> <?= bersihkan($data["nama"]); ?></p> 
+      <p><strong>Email:</strong> <?= bersihkan($data["email"]); ?></p> 
+      <p><strong>Semester:</strong> <?= bersihkan($data["semester"]); ?></p> 
+      <p><strong>Tanggal Kunjungan:</strong> <?= bersihkan($data["tanggal"]); ?></p> 
+      <p><strong>Jenis Pesan:</strong> <?= bersihkan($data["jenis_pesan"]); ?></p> 
+      <p><strong>Topik yang Diminati:</strong> <?= bersihkan($data["minat"]); ?></p> 
+      <p><strong>Program Studi:</strong> <?= bersihkan($data["prodi"]); ?></p> 
+      <p><strong>Pesan:</strong> <?= nl2br(bersihkan($data["pesan"])); ?></p> 
+    </section> 
+    <?php endforeach; ?> 
+<?php else: ?> 
+<p>Belum ada data kontak yang tersimpan.</p> 
+<?php endif; ?> 
+</article>
+
       </section>
     </main>
 

@@ -337,3 +337,4 @@ $teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
     <script src="script.js"></script>
 </body>
 </html>
+
